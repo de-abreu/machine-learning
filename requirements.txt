@@ -2,5 +2,5 @@ ipykernel==6.30.1
 islp==0.4.0
 jupyter==1.1.1
 python-lsp-server[all]==1.13.1
-scikit-learn=1.7.2
+scikit-learn==1.7.2
 
