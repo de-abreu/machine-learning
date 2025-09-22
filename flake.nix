@@ -22,8 +22,10 @@
         ipykernel==6.30.1
         islp==0.4.0
         jupyter==1.1.1
+        kneed==0.8.5
         python-lsp-server[all]==1.13.1
-        scikit-learn=1.7.2
+        scikit-learn==1.7.2
+        tqdm==4.67.1
       '';
     };
   in {
