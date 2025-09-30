@@ -19,19 +19,30 @@
     requirementsFile = pkgs.writeTextFile {
       name = "requirements.txt";
       text = ''
+        epyt==1.2.2
         ipykernel==6.30.1
         islp==0.4.0
         jupyter==1.1.1
         kneed==0.8.5
         python-lsp-server[all]==1.13.1
         scikit-learn==1.7.2
+        sqlalchemy==2.0.43
         tqdm==4.67.1
       '';
     };
+
+    dependencies = with pkgs; [
+      dbeaver-bin
+      git
+      pythonEnv
+      sqlite
+      unzip
+    ];
+    # Database related dependencies =
   in {
     # For `nix develop`
     devShells.${system}.default = pkgs.mkShell {
-      packages = [pythonEnv];
+      packages = dependencies;
       env = {
         LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
       };
@@ -41,7 +52,6 @@
         source .venv/bin/activate
         pip install -r ${requirementsFile}
         python -m ipykernel install --name "python_ISLP" --user
-        jupyter notebook
       '';
     };
   };
