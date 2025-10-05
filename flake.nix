@@ -26,6 +26,7 @@
         kneed==0.8.5
         python-lsp-server[all]==1.13.1
         scikit-learn==1.7.2
+        seaborn==0.13.2
         sqlalchemy==2.0.43
         tqdm==4.67.1
       '';
