@@ -39,7 +39,6 @@
       sqlite
       unzip
     ];
-    # Database related dependencies =
   in {
     # For `nix develop`
     devShells.${system}.default = pkgs.mkShell {
