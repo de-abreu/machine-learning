@@ -1,58 +1,30 @@
 {
   description = "🤖 Machine Learning development environment";
 
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+  inputs = {
+    nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
+    devenv.url = "github:cachix/devenv";
+  };
+
+  nixConfig = {
+    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
+    extra-substituters = "https://devenv.cachix.org";
+  };
 
   outputs = {
     self,
     nixpkgs,
-  }: let
+    devenv,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-
-    # Custom Python environment
-    pythonEnv = pkgs.python313.withPackages (ps:
-      with ps; [
-        pip
-      ]);
-
-    requirementsFile = pkgs.writeTextFile {
-      name = "requirements.txt";
-      text = ''
-        epyt==1.2.2
-        ipykernel==6.30.1
-        islp==0.4.0
-        jupyter==1.1.1
-        kneed==0.8.5
-        python-lsp-server[all]==1.13.1
-        scikit-learn==1.7.2
-        seaborn==0.13.2
-        sqlalchemy==2.0.43
-        tqdm==4.67.1
-      '';
-    };
-
-    dependencies = with pkgs; [
-      dbeaver-bin
-      git
-      pythonEnv
-      sqlite
-      unzip
-    ];
   in {
-    # For `nix develop`
-    devShells.${system}.default = pkgs.mkShell {
-      packages = dependencies;
-      env = {
-        LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
-      };
-      shellHook = ''
-        python -m venv .venv
-        # shellcheck disable=SC1091
-        source .venv/bin/activate
-        pip install -r ${requirementsFile}
-        python -m ipykernel install --name "python_ISLP" --user
-      '';
+    devShells.${system}.default = devenv.lib.mkShell {
+      inherit inputs pkgs;
+      modules = [
+        (import (self + "/devenv.nix"))
+      ];
     };
   };
 }
