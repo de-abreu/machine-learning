@@ -168,13 +168,13 @@ Inicialmente, na tentativa da reprodução dos experimentos abordados no artigo 
 em um segundo momento, com experimentos buscando melhorar o potencial preditivo
 dos métodos descritos. Os _notebooks_ produzidos com esta finalidade foram:
 
-2. [Regressão Linear com Uso da Terra](https://github.com/de-abreu/machine-learning/blob/main/01%20-%20Regress%C3%A3o%20Linear/Regress%C3%A3o%20Linear%20com%20Uso%20da%20Terra.ipynb);
+1. [Regressão Linear com Uso da Terra](https://github.com/de-abreu/machine-learning/blob/main/01%20-%20Regress%C3%A3o%20Linear/Regress%C3%A3o%20Linear%20com%20Uso%20da%20Terra.ipynb);
 
-1. [Regressão Linear com _Curve Number_](https://github.com/de-abreu/machine-learning/blob/main/01%20-%20Regress%C3%A3o%20Linear/Regress%C3%A3o%20Linear%20com%20Curve%20Number.ipynb);
+2. [Regressão Linear com _Curve Number_](https://github.com/de-abreu/machine-learning/blob/main/01%20-%20Regress%C3%A3o%20Linear/Regress%C3%A3o%20Linear%20com%20Curve%20Number.ipynb);
 
-1. [Regressão kNN](https://github.com/de-abreu/machine-learning/blob/main/02%20-%20Regress%C3%A3o%20kNN/Regress%C3%A3o%20com%20kNN.ipynb);
+3. [Regressão kNN](https://github.com/de-abreu/machine-learning/blob/main/02%20-%20Regress%C3%A3o%20kNN/Regress%C3%A3o%20com%20kNN.ipynb);
 
-1. [Regressão kNN com kMeans Clustering](https://github.com/de-abreu/machine-learning/blob/main/07%20-%20kNN%20Clustering/kNN%20Clustering.ipynb).
+4. [Regressão kNN com kMeans Clustering](https://github.com/de-abreu/machine-learning/blob/main/07%20-%20kNN%20Clustering/kNN%20Clustering.ipynb).
 
 E os critérios que utilizamos para avaliar a adequação do modelo foram:
 
